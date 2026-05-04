@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Auto Harvest Ambrosia</name>
+  <author>jayobie</author>
+  <packageId>jayobie.AutoHarvestAmbrosia</packageId>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <description>A lightweight mod that automatically marks Ambrosia sprouts for harvest as soon as they become fully grown.</description>
+</ModMetaData>
