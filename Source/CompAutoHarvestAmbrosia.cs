@@ -16,12 +16,26 @@ namespace AutoHarvestAmbrosia
     {
         bool designatedForHarvest = false;
 
+        // Saves our boolean state to the save file
+        public override void PostExposeData()
+        {
+            base.PostExposeData();
+            Scribe_Values.Look(ref designatedForHarvest, "designatedForHarvest", false);
+        }
+
         public override void CompTickLong()
         {
             base.CompTickLong();
 
             if (this.parent is Plant plant && plant.Spawned)
             {
+                // If the plant drops below 100% growth, it was likely harvested.
+                // Reset flag so it can be designated again when it regrows.
+                if (plant.Growth < 1f)
+                {
+                    designatedForHarvest = false;
+                }
+
                 // Check if the plant is fully grown 
                 if (!designatedForHarvest && plant.HarvestableNow && plant.Growth >= 1f)
                 {
